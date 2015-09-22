@@ -1,1 +1,10 @@
 /* CSS declarations go here */
+.list{
+	
+	padding: 5px;
+	border: 2px #33CCFF solid;
+	margin-bottom: 15px;
+	border-radius: 10px;
+	
+	
+}
