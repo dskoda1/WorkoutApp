@@ -1,16 +1,44 @@
 <template name="WorkoutPage">
-	
+
 	<div class="col-xs-12 col-sm-10 col-sm-offset-1">
-	<h2>This is where you create new workouts and view past ones!</h2>
-	
-	<div class="list">
-		<ul>
-	{{#each workouts}}
-	
-	<li>{{title}}</li>
-	
-	{{/each}}
-	</ul>
+
+		{{#if currentUser}}
+			{{#if activeWorkout }}
+		 		
+				 {{> newWorkoutForm}}
+				 
+		 	{{else}}
+				{{#with getWorkout}}
+				
+					<h4>Current Workout: {{title}}</h4>
+					
+					{{#if activeExercise}}
+						
+						{{> newExerciseForm}}
+					
+					{{else}}
+					
+						{{#with getExercise}}
+						
+						<h5>Current Exercise: {{name}}</h5>
+							
+							{{>newSetForm}}
+							
+						{{/with}}
+					
+					{{/if}}
+					
+				{{/with}}
+			{{/if}}
+		  
+		  	{{#each workouts}}
+		   
+		   		{{> oldWorkout}} 
+		   
+		   	{{/each}} 
+			   
+		  {{else}}
+
+		<h3>Login to view and start recording workouts!</h3> {{/if}}
 	</div>
-	</div>
-	</template>
+</template>

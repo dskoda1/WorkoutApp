@@ -25,7 +25,7 @@ Router.map(function () {
     path: '/Workouts',
     data: function () {
       templateData = { 
-        workouts: Workouts.find({}),    
+        workouts: Workouts.find({}, {sort: {date: -1}}),    
         sets: Sets.find({})
          };
 
