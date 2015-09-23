@@ -1,11 +1,33 @@
 <template name="oldWorkout">
 	<div class="oldWorkout">
-<h4>{{title}}</h4>
+		<h4>{{title}}</h4>
+
+		
+		<ol>
+			{{#each getExercises}}
+			<li> 
+				{{name}}
+				<table class="table">
+				<th>Reps</th>
+				<th>Weight</th>
+				{{#each getSets}}
+				<tr>
+					<td>{{reps}}</td>
+						<td>{{weight}}</td>
+					</tr>
+					
+					{{/each}}
+				
+				</table>
+				<ul>
+					
+					</ul>
+			</li>	
+				
+				 {{/each}}
+		</ol>
+		
 
 
-
-
-
-
-</div>
+	</div>
 </template>

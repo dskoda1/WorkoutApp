@@ -1,7 +1,36 @@
 <template name="newSetForm">
-	
+
 	<h5>New Set</h5>
-	
-	
-	
-	</template>
+
+
+
+
+	<div class="container-fluid">
+		<div class="row">
+			<form class="newSet">
+
+				<div class="col-xs-12 col-sm-6">
+					<input class="form-control" type="text" placeholder="Reps" name="reps" id="reps" />
+
+				</div>
+
+				<div class="col-xs-12 col-sm-6">
+					<input class="form-control" type="text" placeholder="Weight" name="weight" id="weight" />
+
+				</div>
+				<div class="col-xs-12">
+					<br>
+
+					<input type="submit" class="btn btn-primary" />
+					<span class="pull-right">
+						<button name="nextExercise" class="btn btn-success finishExercise">Submit & Next Exercise!</button>
+						</span>
+				</div>
+
+			</form>
+		</div>
+	</div>
+
+
+
+</template>

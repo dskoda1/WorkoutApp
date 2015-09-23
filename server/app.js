@@ -59,6 +59,25 @@ Meteor.methods({
     });
     return Exercises.findOne({ date: date})._id;
     
+  },
+  addNewSet: function(param){
+    
+    var date = new Date();
+    Sets.insert({
+      
+      date: date,
+      owner: Meteor.userId(),
+      username: Meteor.user().username,
+      wId: param.wId,
+      eId: param.eId,
+      reps: param.reps,
+      weight: param.weight
+     
+    });
+    
+    
+    
+    
   }
 
 

@@ -24,6 +24,13 @@ Template.newExerciseForm.events({
 		
 		
 		
+	},
+	'click .finishWorkout': function(){
+		
+		Session.set("currentExerciseId", 0);
+		Session.set("currentWorkoutId", 0);
+		
+		
 	}
 	
 	
