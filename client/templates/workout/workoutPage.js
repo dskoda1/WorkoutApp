@@ -1,6 +1,9 @@
 
   Session.setDefault("currentWorkoutId", 0);
   Session.setDefault("currentExerciseId", 0);
+  Session.setDefault("currentWorkoutEditId", 0);
+  Session.setDefault("currentlyWorkingOut", 0);
+  Session.setDefault("attemptDeleteWorkoutId", 0);
 
 Template.WorkoutPage.helpers({
 	

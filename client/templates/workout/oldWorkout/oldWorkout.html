@@ -1,32 +1,70 @@
 <template name="oldWorkout">
 	<div class="oldWorkout">
-		<h4>{{title}}</h4>
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-2">
+					<button class="btn btn-sm btn-default " id="editWorkout">
+						<i class="fa fa-pencil-square-o"></i>
+					</button>
+					&nbsp;
 
-		
+
+				</div>
+				<div class="col-xs-6">
+					<div class="workoutTitle">{{title}}</div>
+				</div>
+				<div class="col-xs-4">
+					<span class="pull-right">
+					{{#if thisWorkoutIsEdit}} 
+						{{#if thisWorkoutAttemptDelete}}
+	
+						<button class="btn btn-sm btn-danger" id="confirmDeleteWorkout">
+							Confirm
+						</button>
+	
+						{{else}}
+						<button class="btn btn-sm btn-danger" id="deleteWorkout">
+							X
+						</button>
+						{{/if}} 
+					{{/if}}
+					</span>
+				</div>
+			</div>
+		</div>
 		<ol>
 			{{#each getExercises}}
-			<li> 
-				{{name}}
-				<table class="table">
-				<th>Reps</th>
-				<th>Weight</th>
-				{{#each getSets}}
-				<tr>
-					<td>{{reps}}</td>
-						<td>{{weight}}</td>
-					</tr>
-					
-					{{/each}}
-				
-				</table>
+			<li>
+
+				<h5>{{name}}</h5>
+
+				<div class="table-responsive">
+					<table class="table table-striped table-bordered ">
+						<thead>
+							<th>Reps</th>
+							<th>Weight</th>
+						</thead>
+						<tbody>
+							{{#each getSets}}
+							<tr>
+								<td>{{reps}}</td>
+								<td>{{weight}}</td>
+
+							</tr>
+
+							{{/each}}
+						</tbody>
+
+					</table>
+				</div>
 				<ul>
-					
-					</ul>
-			</li>	
-				
-				 {{/each}}
+
+				</ul>
+			</li>
+
+			{{/each}}
 		</ol>
-		
+
 
 
 	</div>

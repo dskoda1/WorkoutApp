@@ -16,7 +16,13 @@ Template.newWorkoutForm.events({
 
 
       });
-
+	},
+	
+	'click #newWorkout': function(){
+		
+		Session.set("currentlyWorkingOut", 1);
+		
+		
 		
 	}
 	
@@ -28,6 +34,11 @@ Template.newWorkoutForm.events({
 
 Template.newWorkoutForm.helpers({
 	
+	"isWorkingOut": function(){
+		
+		return !Session.get("currentlyWorkingOut");
+		
+	}
 	
 	
 	

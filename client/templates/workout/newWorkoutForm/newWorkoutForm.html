@@ -2,13 +2,22 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-xs-12">
-				<h3>Get started with a new workout!</h3>
+				{{#if isWorkingOut}}
+
+				<button class="btn btn-success btn-block" id="newWorkout">
+					Start a workout!
+				</button>
+				<br> 
+				{{else}}
+				<!--<h3>Get started with a new workout!</h3>-->
 				<form class="newWorkout">
 					<label for="newWorkoutTitle">Workout Title</label>
 					<input type="text" class="form-control" name="newWorkoutTitle" />
 					<br>
 					<input type="submit" value="Lets go!" class="btn btn-primary" />
+					<br>
 				</form>
+				{{/if}}
 			</div>
 		</div>
 

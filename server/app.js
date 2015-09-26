@@ -75,8 +75,10 @@ Meteor.methods({
      
     });
     
+  },
+  deleteWorkout: function(id){
     
-    
+    Workouts.remove(id);
     
   }
 
