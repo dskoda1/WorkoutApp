@@ -84,8 +84,10 @@ Meteor.methods({
   deleteExercise: function(id){
     
     Exercises.remove(id);
+  },
+  deleteSet: function(id){
+    
+    Sets.remove(id);
   }
-
-
 
 })
