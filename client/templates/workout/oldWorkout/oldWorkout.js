@@ -1,3 +1,8 @@
+Session.setDefault("attemptDeleteExerciseId", 0);
+Session.setDefault("attemptDeleteWorkoutId", 0);
+
+
+
 Template.oldWorkout.helpers({
 
 	'getExercises': function () {
@@ -12,67 +17,70 @@ Template.oldWorkout.helpers({
 		var sets = Sets.find({ eId: this._id });
 
 		return sets;
-
-
-
 	},
-	'thisWorkoutIsEdit': function () {
+	'isActiveWorkout': function () {
 
-		var isEdit = Session.get("currentWorkoutEditId");
-		if (isEdit === this._id)
+		var wid = Session.get('currentWorkoutId');
+
+		if (wid === this.wId)
 			return true;
 		else return false;
 
 	},
-	'thisWorkoutAttemptDelete': function () {
+	"notEditingWorkout": function(){
+		
+		var wid = Session.get('currentWorkoutId');
 
-		var isDelete = Session.get("attemptDeleteWorkoutId");
-
-		if (isDelete) {
-			return true;
-		}
-		else {
+		if (wid === this.wId)
 			return false;
-		}
+		else return true;
+		
+		
+	},
+	'notDeletingWorkout': function(){
+		
+		
+		var id = Session.get("attemptDeleteWorkoutId");;
 
+		if (id === this._id)
+			return false;
+		else return true;
+		
+		
+	},
+	'notDeletingExercise': function () {
+
+		var id = Session.get("attemptDeleteExerciseId");
+
+		if (id === this._id)
+			return false;
+		else return true;
 	}
-
-
-
-
 
 
 });
 
 Template.oldWorkout.events({
 
+	//Edit the workout 
 	"click #editWorkout": function () {
-		var currentWorkoutEditId = Session.get("currentWorkoutEditId");
-		Session.set("attemptDeleteWorkoutId", 0);
-		if (currentWorkoutEditId !== this._id) {
-			Session.set("currentWorkoutEditId", this._id);
-			Session.set("currentExerciseId", 0);
-		}
-		else {
-			Session.set("currentWorkoutEditId", 0);
-			Session.set("currentExerciseId", 0);
-		}
-
+		Session.set("currentWorkoutId", this._id);
 	},
-
-	"click #deleteWorkout": function () {
-
-		Session.set("attemptDeleteWorkoutId", this._id);
-
+	//Start the delete process for an exercise
+	"click #deleteExercise": function () {
+		Session.set("attemptDeleteExerciseId", this._id);
 	},
-	"click #confirmDeleteWorkout": function () {
-
-		Meteor.call("deleteWorkout", this._id);
-		Session.set("attemptDeleteWorkoutId", 0);
-
+	//Add sets to an exercise
+	"click #editExercise": function () {
+		Session.set("currentExerciseId", this._id);
 	},
-
-
-
+	//Delete an exercise
+	"click #confirmDeleteExercise": function () {
+		Meteor.call("deleteExercise", this._id);
+	},
+	//Cancel the deletion of an exercise
+	"click #cancelDeleteExercise": function () {
+		Session.set("attemptDeleteExerciseId", 0);
+	}
 
 })

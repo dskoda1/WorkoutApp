@@ -80,6 +80,10 @@ Meteor.methods({
     
     Workouts.remove(id);
     
+  },
+  deleteExercise: function(id){
+    
+    Exercises.remove(id);
   }
 
 

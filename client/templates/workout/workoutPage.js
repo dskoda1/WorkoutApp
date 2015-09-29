@@ -2,8 +2,8 @@
   Session.setDefault("currentWorkoutId", 0);
   Session.setDefault("currentExerciseId", 0);
   Session.setDefault("currentWorkoutEditId", 0);
-  Session.setDefault("currentlyWorkingOut", 0);
-  Session.setDefault("attemptDeleteWorkoutId", 0);
+
+ 
 
 Template.WorkoutPage.helpers({
 	
@@ -17,14 +17,14 @@ Template.WorkoutPage.helpers({
 	'activeWorkout': function(){
 		
 		var active = Session.get("currentWorkoutId");
-		console.log(active);
+
 		return !active;
 		
 	},
 	'activeExercise': function(){
 		
 		var active = Session.get("currentExerciseId");
-		console.log(active);
+
 		return !active;
 		
 		
