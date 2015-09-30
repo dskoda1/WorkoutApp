@@ -30,6 +30,15 @@ Template.oldWorkout.helpers({
 	'isActiveExercise': function(){
 		var eId = Session.get('currentExerciseId');
 		
+		if(eId === this._id)
+			return true;
+		else return false;
+		
+		
+	},
+	'isActiveExerciseForSet': function(){
+		var eId = Session.get('currentExerciseId');
+		
 		if(eId === this.eId)
 			return true;
 		else return false;	
@@ -73,7 +82,8 @@ Template.oldWorkout.events({
 	"click #saveWorkout": function(){
 		//Check for a change of name
 		var newName = document.getElementById("workoutNameInput").value;
-		this.title = newName;
+		
+		Meteor.call("editWorkoutName", this._id, newName);	
 		Session.set("currentWorkoutId", 0);
 		Session.set("currentExerciseId", 0);
 		Session.set("attemptDeleteExerciseId", 0);
@@ -109,6 +119,17 @@ Template.oldWorkout.events({
 	},
 	'click #deleteSet': function(){
 		Meteor.call("deleteSet", this._id);		
+	},
+	'click #confirmSaveExercise': function(){
+		
+		var newName = document.getElementById("currentExerciseName").value;
+
+
+		Meteor.call("editExerciseName", this._id, newName);
+		
+		//Make it not the active exercise anymore
+		Session.set("currentExerciseId", 0);
+		
 	}
 
 })

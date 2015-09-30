@@ -8,6 +8,12 @@
 	
 }
 
+.oldWorkout ol{
+	
+	margin-left: -25px;
+	
+}
+
 .workoutTitle{
 	
 	
@@ -17,3 +23,10 @@
 	
 }
 
+.exerciseNameInput{
+	
+	margin-top:5px;
+	margin-bottom: 5px;
+	margin-left: -15px;
+	margin-right: -10px;
+}

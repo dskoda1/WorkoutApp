@@ -88,6 +88,14 @@ Meteor.methods({
   deleteSet: function(id){
     
     Sets.remove(id);
+  },
+  editWorkoutName: function(id, newName){
+    
+    Workouts.update(id, {$set: {title: newName}});
+  },
+  editExerciseName: function(id, newName){
+    
+    Exercises.update(id, { $set: { name: newName} });
   }
 
 })

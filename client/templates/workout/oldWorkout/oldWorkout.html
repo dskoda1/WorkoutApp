@@ -38,21 +38,32 @@
 			{{/if}}
 
 		</div>
-
+		<div style="height:10px"></div>
 		<ol>
 			{{#each getExercises}}
 			<li>
-
-				<h5>{{name}} </h5>
-
+				{{#if isActiveExercise}}
+				<div class="exerciseNameInput">
+					<input type="text" class="form-control" value="{{name}}" id="currentExerciseName" />
+				</div>
+				{{else}}
+				<h5>{{name}} </h5> {{/if}}
 				<div class="row">
-					{{#if isActiveWorkout}}
+					{#if isActiveWorkout}} {{#if isActiveExercise}}
+					<button class="btn btn-sm btn-default " id="confirmSaveExercise">
+						Save
+					</button>
+					<button class="btn btn-sm btn-danger " id="cancelSaveExercise">
+						Cancel
+					</button>
+					{{else}}
 					<span class="pull-left">
-				<button class="btn btn-xs btn-default " id="editExercise">
-					<i class="fa fa-pencil-square-o"></i>
-				</button>
+					<button class="btn btn-xs btn-default " id="editExercise">
+						<i class="fa fa-pencil-square-o"></i>
+					</button>
+	
+					</span> {{/if}}
 
-				</span>
 
 
 					<span class="pull-right">
@@ -73,8 +84,7 @@
 					</div>
 					
 					{{/if}}
-				</span> 
-				{{/if}}
+				</span> {{/if}}
 				</div>
 				<br>
 				<div class="table-responsive">
@@ -88,13 +98,13 @@
 							<tr>
 								<td>{{reps}}</td>
 								<td>{{weight}}</td>
-								{{#if isActiveExercise}}
+								{{#if isActiveExerciseForSet}}
 								<td style="text-align:center">
 									<button class="btn btn-sm btn-danger " id="deleteSet">
-						x
-					</button>
+										x
+									</button>
 								</td>
-								
+
 								{{/if}}
 							</tr>
 
