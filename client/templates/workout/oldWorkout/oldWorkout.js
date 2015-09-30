@@ -130,6 +130,10 @@ Template.oldWorkout.events({
 		//Make it not the active exercise anymore
 		Session.set("currentExerciseId", 0);
 		
+	},
+	'click #cancelSaveExercise': function(){
+		
+		Session.set("currentExerciseId", 0);
 	}
 
 })

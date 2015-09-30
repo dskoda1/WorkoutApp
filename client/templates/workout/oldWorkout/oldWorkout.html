@@ -47,34 +47,36 @@
 					<input type="text" class="form-control" value="{{name}}" id="currentExerciseName" />
 				</div>
 				{{else}}
-				<h5>{{name}} </h5> {{/if}}
+				<h5>{{name}} </h5> 
+				{{/if}}
 				<div class="row">
-					{#if isActiveWorkout}} {{#if isActiveExercise}}
-					<button class="btn btn-sm btn-default " id="confirmSaveExercise">
-						Save
-					</button>
-					<button class="btn btn-sm btn-danger " id="cancelSaveExercise">
-						Cancel
-					</button>
+				{{#if isActiveWorkout}}
+					{{#if isActiveExercise}}
+						<button class="btn btn-sm btn-default " id="confirmSaveExercise">
+							Save
+						</button>
+						<button class="btn btn-sm btn-danger " id="cancelSaveExercise">
+							Cancel
+						</button>
 					{{else}}
-					<span class="pull-left">
-					<button class="btn btn-xs btn-default " id="editExercise">
-						<i class="fa fa-pencil-square-o"></i>
-					</button>
-	
-					</span> {{/if}}
-
-
-
-					<span class="pull-right">
-						{{#if notDeletingExercise}}
-					<button class="btn btn-xs btn-danger " id="deleteExercise">
-						x
-					</button>
-					<br>
+						<span class="pull-left">
+							<button class="btn btn-xs btn-default " id="editExercise">
+								<i class="fa fa-pencil-square-o"></i>
+							</button>
+						</span> 
+					{{/if}}
+					{{#if notDeletingExercise}}
+						<span class="pull-right">
+							
+						<button class="btn btn-sm btn-danger " id="deleteExercise">
+							Remove
+						</button>
+						
+							<br>
+						</span> 
 					{{else}}
 					
-					<div style="text-align:center">
+					<div style="text-align:right">
 					<button class="btn btn-danger " id="confirmDeleteExercise">
 						Delete
 					</button>
@@ -84,7 +86,11 @@
 					</div>
 					
 					{{/if}}
-				</span> {{/if}}
+					
+					
+				
+				{{/if}}
+				
 				</div>
 				<br>
 				<div class="table-responsive">
@@ -100,7 +106,7 @@
 								<td>{{weight}}</td>
 								{{#if isActiveExerciseForSet}}
 								<td style="text-align:center">
-									<button class="btn btn-sm btn-danger " id="deleteSet">
+									<button class="btn btn-xs btn-danger " id="deleteSet">
 										x
 									</button>
 								</td>
@@ -113,9 +119,7 @@
 
 					</table>
 				</div>
-				<ul>
-
-				</ul>
+				
 			</li>
 
 			{{/each}}
