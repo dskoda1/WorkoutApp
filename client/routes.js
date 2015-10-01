@@ -1,31 +1,34 @@
 /* global Router */
 
 Router.configure({
-	
+
 	layoutTemplate: 'mainNav'
 });
 
 Router.route('/', function(){
 	this.render('Home');
-	
+
 });
 
-Router.route('/JournalPage', function(){
-	this.render('JournalPage');
-	
+Router.map(function(){
+	this.route('JournalPage', {
+		path: '/JournalPage',
+		data: function(){
+			templateData = {
+				journals: Journals.find({}, {sort: {date: -1}})
+			};
+			return templateData;
+		}
+	});
 });
 
-// Router.route('/Workouts', function(){
-// 	this.render('WorkoutPage');
-// 	
-// });
 
 Router.map(function () {
   this.route('WorkoutPage', {
     path: '/Workouts',
     data: function () {
-      templateData = { 
-        workouts: Workouts.find({}, {sort: {date: -1}}),    
+      templateData = {
+        workouts: Workouts.find({}, {sort: {date: -1}}),
         sets: Sets.find({})
          };
 
