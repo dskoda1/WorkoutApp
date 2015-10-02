@@ -29,29 +29,29 @@ Template.oldWorkout.helpers({
 	},
 	'isActiveExercise': function(){
 		var eId = Session.get('currentExerciseId');
-		
+
 		if(eId === this._id)
 			return true;
 		else return false;
-		
-		
+
+
 	},
 	'isActiveExerciseForSet': function(){
 		var eId = Session.get('currentExerciseId');
-		
+
 		if(eId === this.eId)
 			return true;
-		else return false;	
+		else return false;
 	},
 	"notEditingWorkout": function(){
-		
+
 		var wid = Session.get('currentWorkoutId');
 
 		if (wid === this._id)
 			return false;
 		else return true;
-		
-		
+
+
 	},
 	'notDeletingExercise': function () {
 
@@ -62,12 +62,18 @@ Template.oldWorkout.helpers({
 		else return true;
 	},
 	'deletingWorkout': function(){
-		
+
 		var id = Session.get("attemptDeleteWorkoutId");
-		if(id === this._id) 
+		if(id === this._id)
 			return true;
 		else return false;
-		
+
+	},
+	'formatDate': function(date){
+		//alert(date);
+		return moment(date).format('MM/DD, hh:mma');
+
+
 	}
 
 
@@ -75,20 +81,20 @@ Template.oldWorkout.helpers({
 
 Template.oldWorkout.events({
 
-	//Edit the workout 
+	//Edit the workout
 	"click #editWorkout": function () {
 		Session.set("currentWorkoutId", this._id);
 	},
 	"click #saveWorkout": function(){
 		//Check for a change of name
 		var newName = document.getElementById("workoutNameInput").value;
-		
-		Meteor.call("editWorkoutName", this._id, newName);	
+
+		Meteor.call("editWorkoutName", this._id, newName);
 		Session.set("currentWorkoutId", 0);
 		Session.set("currentExerciseId", 0);
 		Session.set("attemptDeleteExerciseId", 0);
 		Session.set("attemptDeleteWorkoutId", 0);
-		
+
 	},
 	"click #deleteWorkout": function(){
 		Session.set("attemptDeleteWorkoutId", this._id);
@@ -115,24 +121,30 @@ Template.oldWorkout.events({
 		Session.set("attemptDeleteWorkoutId", 0);
 		Session.set("currentWorkoutId", 0);
 		Session.set("currentExerciseId", 0);
-		
+
+	},
+	'click #cancelDeleteWorkout': function(){
+
+		Session.set("attemptDeleteExerciseId", 0);
+		Session.set("attemptDeleteWorkoutId", 0);
+
 	},
 	'click #deleteSet': function(){
-		Meteor.call("deleteSet", this._id);		
+		Meteor.call("deleteSet", this._id);
 	},
 	'click #confirmSaveExercise': function(){
-		
+
 		var newName = document.getElementById("currentExerciseName").value;
 
 
 		Meteor.call("editExerciseName", this._id, newName);
-		
+
 		//Make it not the active exercise anymore
 		Session.set("currentExerciseId", 0);
-		
+
 	},
 	'click #cancelSaveExercise': function(){
-		
+
 		Session.set("currentExerciseId", 0);
 	}
 

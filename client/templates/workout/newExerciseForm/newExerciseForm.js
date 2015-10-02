@@ -1,7 +1,7 @@
 Template.newExerciseForm.events({
-	
+
 	'submit .newExercise': function(event){
-		
+
 		//Stop the page from default posting
 		event.preventDefault();
 		//Extract the name
@@ -16,35 +16,29 @@ Template.newExerciseForm.events({
         if (err) {
           console.log(err);
         }
-		
+
         Session.set("currentExerciseId", data);
 
 
       });
-		
-		
-		
+
+
+
 	},
-	'click .finishWorkout': function(){
-		
-		Session.set("currentExerciseId", 0);
-		Session.set("currentWorkoutId", 0);
-		
-		
-	}
-	
-	
-	
-	
-	
+
+
+
+
+
+
 });
 
 Template.newExerciseForm.helpers({
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
 });

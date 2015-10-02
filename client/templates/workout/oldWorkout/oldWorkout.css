@@ -1,37 +1,52 @@
 .oldWorkout{
-	
+
 	border-top: 3px black solid;
-	padding: 5px;
+	padding-top: 5px;
 	margin-top:5px;
-	
-	
-	
+
+
+
 }
 
 .oldWorkout ol{
-	
+
 	margin-left: -25px;
-	
+margin-right: 10px;
 }
 
+
+
 .oldWorkout ol li{
-	
+
 	display: inline;
+
 }
 
 .workoutTitle{
-	
-	
-	
+
+
+
 	font-size: x-large;
-	
-	
+
+
 }
 
 .exerciseNameInput{
-	
+
 	margin-top:5px;
 	margin-bottom: 5px;
 	margin-left: -15px;
 	margin-right: -10px;
+}
+
+
+.row.no-gutters {
+  margin-right: 0;
+  margin-left: 0;
+
+}
+.row.no-gutters > [class^="col-"],
+.row.no-gutters > [class*=" col-"] {
+  padding-right: 0;
+  padding-left: 0;
 }
