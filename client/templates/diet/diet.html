@@ -1,0 +1,14 @@
+<template name="Diet">
+
+<h3>Record your diet here</h3>
+{{> newMealEntry}}
+<h4>Past meals</h4>
+<ul>
+{{#each meals}}
+
+  <li>{{text}}</li>
+
+
+{{/each}}
+</ul>
+</template>

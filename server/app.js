@@ -30,6 +30,11 @@ Meteor.publish("sets", function () {
 
 });
 
+Meteor.publish("meals", function(){
+
+  return Meals.find({owner: this.userId});
+})
+
 
 
 Meteor.methods({
@@ -107,7 +112,19 @@ Meteor.methods({
       username: Meteor.user().username,
       text: text
     });
+  },
+  addMeal: function(text){
 
+    var date = new Date();
+    Meals.insert({
+
+        date: date,
+        owner: Meteor.userId(),
+        username: Meteor.user().username,
+        text: text
+
+
+    });
   }
 
 })

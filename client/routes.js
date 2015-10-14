@@ -36,3 +36,16 @@ Router.map(function () {
     }
   });
 });
+
+Router.map(function () {
+  this.route('Diet', {
+    path: '/Diet',
+    data: function () {
+      templateData = {
+        meals: Meals.find({}, {sort: {date: -1}})
+         };
+
+      return templateData;
+    }
+  });
+});
