@@ -15,6 +15,7 @@
   Meteor.subscribe("workouts");
   Meteor.subscribe("exercises");
   Meteor.subscribe("sets");
+  Meteor.subscribe("meals");
 
 
 
